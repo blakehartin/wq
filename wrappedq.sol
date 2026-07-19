@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-pragma solidity ^0.7.6;
+pragma solidity =0.7.6;
 
 contract WQ {
     string public name     = "Wrapped Q";
@@ -42,7 +42,8 @@ contract WQ {
     function withdraw(uint wad) public {
         require(balanceOf[msg.sender] >= wad);
         balanceOf[msg.sender] -= wad;
-        msg.sender.transfer(wad);
+        (bool success, ) = msg.sender.call{value: wad}("");
+        require(success, "WQ: native transfer failed");
         emit Withdrawal(msg.sender, wad);
     }
 
