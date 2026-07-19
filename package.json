@@ -1,0 +1,35 @@
+{
+  "name": "@quantumcoin/wq",
+  "version": "1.0.0",
+  "description": "Wrapped Q (WQ) - wrapped native coin contract for the QuantumCoin blockchain, a modified fork of WETH9",
+  "license": "GPL-3.0-or-later",
+  "files": [
+    "wrappedq.sol"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantumcoinproject/wq.git"
+  },
+  "homepage": "https://github.com/quantumcoinproject/wq#readme",
+  "bugs": {
+    "url": "https://github.com/quantumcoinproject/wq/issues"
+  },
+  "keywords": [
+    "quantumcoin",
+    "solidity",
+    "wrapped",
+    "wq"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "compile": "node scripts/compile.js",
+    "test": "npm run compile && node scripts/devnet.js ensure && node --test --test-concurrency=1",
+    "prepublishOnly": "npm run compile"
+  },
+  "devDependencies": {
+    "@quantumcoin/solc": "^0.7.6",
+    "quantumcoin": "^8.0.2"
+  }
+}

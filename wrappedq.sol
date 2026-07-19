@@ -40,7 +40,7 @@ contract WQ {
         emit Deposit(msg.sender, msg.value);
     }
     function withdraw(uint wad) public {
-        require(balanceOf[msg.sender] >= wad);
+        require(balanceOf[msg.sender] >= wad, "WQ:a1");
         balanceOf[msg.sender] -= wad;
         (bool success, ) = msg.sender.call{value: wad}("");
         require(success, "WQ: native transfer failed");
@@ -65,10 +65,10 @@ contract WQ {
         public
         returns (bool)
     {
-        require(balanceOf[src] >= wad);
+        require(balanceOf[src] >= wad, "WQ:a2");
 
         if (src != msg.sender && allowance[src][msg.sender] != type(uint).max) {
-            require(allowance[src][msg.sender] >= wad);
+            require(allowance[src][msg.sender] >= wad, "WQ:a3");
             allowance[src][msg.sender] -= wad;
         }
 
