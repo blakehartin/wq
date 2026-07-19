@@ -23,6 +23,9 @@
   "engines": {
     "node": ">=18"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "compile": "node scripts/compile.js",
     "test": "npm run compile && node scripts/devnet.js ensure && node --test --test-concurrency=1",
